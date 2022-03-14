@@ -1,0 +1,16 @@
+pipeline {
+     agent any
+     stages {
+         stage('SCM Checkout') {
+              steps {
+                 git(branch: 'master', credentialsId: 'eldiopo',  url: 'https://github.com/eldiopo1999/ProjetTest.git')
+              }
+         }
+		 stage('Build') {
+               steps{
+				sh "mvn clean verify"
+			  }
+         }
+	
+}
+}
